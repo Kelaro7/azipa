@@ -12,7 +12,7 @@ const Header: FC = () => {
         <a href="mailto:czipa7@gmail.com">czipa7@gmail.com</a>
         <span className="phone">+36 20 429 93 95</span>
         <a
-          href="https://linkedin.com/in/andrasczipa"
+          href="https://www.linkedin.com/in/andras-czipa/"
           target="_blank"
           rel="noopener"
         >
