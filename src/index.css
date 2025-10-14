@@ -226,9 +226,27 @@ body {
   color: #00b4b6;
 }
 
-@media (max-width: 600px) {
+/* Mobile Background Styles */
+.portfolio-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .portfolio-page {
+    background-size: contain !important;
+    background-position: center top !important;
+    background-attachment: scroll !important;
+    background-repeat: no-repeat !important;
+    min-height: 100vh;
+    min-height: 100dvh; /* For better mobile support */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
   .profile-header-card {
     padding: 1.5rem 0.5rem;
+    margin: 16px auto;
   }
   .profile-header-card img {
     width: 80px !important;
@@ -245,8 +263,16 @@ body {
     gap: 16px;
     padding: 0 4px;
   }
-
+  .section-card {
+    padding: 18px 12px;
+  }
   .experience-card {
-    padding: 14px 6px;
+    padding: 14px 8px;
+  }
+
+  /* Better mobile main container */
+  main {
+    margin: 20px auto 0 auto !important;
+    padding: 1rem 1rem !important;
   }
 }
