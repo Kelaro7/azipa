@@ -22,7 +22,7 @@ function App() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [window.innerWidth]);
+  }, [window?.innerWidth]);
 
   return (
     <div
