@@ -232,6 +232,24 @@ body {
   overflow-x: hidden;
 }
 
+.resume-button {
+  display: inline-block;
+  background: #000000;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin: 4px;
+  font-size: 0.9rem;
+  border: 2px solid #00b4b6;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.resume-button:hover {
+  color: #00b4b6;
+}
+
 @media (max-width: 768px) {
   .portfolio-page {
     background-size: cover !important;

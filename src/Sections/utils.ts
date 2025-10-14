@@ -4,8 +4,13 @@ export const experiences = [
     company: "Byborg Enterprises",
     date: "Nov 2023 – Oct 2025",
     responsibilities: [
-      "Developed scalable, high-performance web applications using React.js, Next.js, TypeScript, and Redux.",
-      "Integrated RESTful APIs built in Node.js and PHP for dynamic, data-driven features.",
+      "Developed scalable, high-performance web applications using React.js, Next.js, TypeScript, and Redux, ensuring optimal performance and maintainability.",
+      "Integrated RESTful APIs built with Node.js and PHP, enabling dynamic, data-driven features across multiple modules.",
+      "Implemented Matomo analytics from scratch and integrated it into the main project, providing advanced tracking and user insights for product optimization.",
+      "Collaborated within Agile (Scrum and Kanban) teams to deliver features on schedule while maintaining high quality and consistency.",
+      "Adhered to best coding practices, ensuring clean, reusable, and maintainable code following industry standards.",
+      "Contributed to UI/UX improvements, enhancing accessibility, responsiveness, and overall user experience across platforms.",
+      "Translated Figma designs into pixel-perfect, responsive components aligned with design and branding guidelines.",
     ],
   },
   {

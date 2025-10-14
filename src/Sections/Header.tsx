@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Resume from "./Resume";
 
 const Header: FC = () => {
   return (
@@ -17,6 +18,7 @@ const Header: FC = () => {
         >
           LinkedIn: linkedin.com/in/andrasczipa
         </a>
+        <Resume />
       </div>
     </header>
   );
