@@ -7,7 +7,11 @@ const Projects: FC = () => {
       <h3 className="section-title">Side Projects</h3>
       <div className="projects-grid">
         {projects.map((project) => (
-          <div className="section-card" style={{ margin: "0px" }}>
+          <div
+            className="section-card"
+            style={{ margin: "0px" }}
+            key={project.name}
+          >
             <a href={project.url} target="_blank" rel="noopener">
               {project.name}
             </a>

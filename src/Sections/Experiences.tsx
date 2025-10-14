@@ -5,8 +5,8 @@ const Experiences: FC = () => {
   return (
     <section>
       <h3 className="section-title">Experience</h3>
-      {experiences.map((exp, index) => (
-        <div className="section-card" key={index}>
+      {experiences.map((exp) => (
+        <div className="section-card" key={exp.title}>
           <div className="experience-title">{exp.title}</div>
           <div className="experience-company">{exp.company}</div>
           <div className="experience-date">{exp.date}</div>

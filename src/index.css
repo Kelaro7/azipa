@@ -30,7 +30,7 @@ body {
   max-width: 800px;
   margin: 0px auto 0 auto;
   background: rgba(0, 0, 0, 0.7);
-  border-radius: 24px;
+  border-radius: 0px 0px 24px 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   padding: 2.5rem 1.5rem;
   display: flex;
@@ -234,19 +234,16 @@ body {
 
 @media (max-width: 768px) {
   .portfolio-page {
-    background-size: contain !important;
-    background-position: center top !important;
+    background-size: cover !important;
+    background-position: center center !important;
     background-attachment: scroll !important;
-    background-repeat: no-repeat !important;
     min-height: 100vh;
     min-height: 100dvh; /* For better mobile support */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
   }
 
   .profile-header-card {
     padding: 1.5rem 0.5rem;
-    margin: 16px auto;
+    border-radius: 0;
   }
   .profile-header-card img {
     width: 80px !important;
@@ -263,16 +260,8 @@ body {
     gap: 16px;
     padding: 0 4px;
   }
-  .section-card {
-    padding: 18px 12px;
-  }
+
   .experience-card {
     padding: 14px 8px;
-  }
-
-  /* Better mobile main container */
-  main {
-    margin: 20px auto 0 auto !important;
-    padding: 1rem 1rem !important;
   }
 }
