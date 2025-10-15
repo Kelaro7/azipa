@@ -16,7 +16,7 @@ const Header: FC = () => {
           target="_blank"
           rel="noopener"
         >
-          LinkedIn: linkedin.com/in/andrasczipa
+          LinkedIn: linkedin.com/in/andras-czipa
         </a>
         <Resume />
       </div>
