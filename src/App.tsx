@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect, useState } from "react";
 import AboutMe from "./Sections/AboutMe";
 import Experiences from "./Sections/Experiences";
@@ -61,6 +62,7 @@ function App() {
 
         <Education />
       </main>
+      <Analytics />
     </div>
   );
 }
