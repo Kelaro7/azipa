@@ -14,7 +14,7 @@ const AboutMe: FC = () => {
             textAlign: "center",
           }}
         >
-          <strong>Frontend Developer</strong> with over 2 years of experience
+          <strong>Frontend Developer</strong> with professional experience in
           building scalable web applications using{" "}
           <span style={{ color: "#00b4b6" }}>React</span>,{" "}
           <span style={{ color: "#00b4b6" }}>Next.js</span>,{" "}
