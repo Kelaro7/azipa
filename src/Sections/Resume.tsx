@@ -2,11 +2,10 @@ import { FC } from "react";
 
 const Resume: FC = () => {
   const handleDownload = () => {
-    // Replace with your actual resume file path
-    const resumeUrl = "/andras-czipa-frontend-resume.pdf";
+    const resumeUrl = "/andas-czipa-resume-frontend.pdf";
     const link = document.createElement("a");
     link.href = resumeUrl;
-    link.download = "andras-czipa-frontend-resume.pdf";
+    link.download = "andas-czipa-resume-frontend.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
