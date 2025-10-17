@@ -2,10 +2,10 @@ import { FC } from "react";
 
 const Resume: FC = () => {
   const handleDownload = () => {
-    const resumeUrl = "/andas-czipa-resume-frontend.pdf";
+    const resumeUrl = "/andras_czipa_resume_frontend.pdf";
     const link = document.createElement("a");
     link.href = resumeUrl;
-    link.download = "andas-czipa-resume-frontend.pdf";
+    link.download = "andras_czipa_resume_frontend.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
