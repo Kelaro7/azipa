@@ -51,7 +51,7 @@ export const experiences: Experience[] = [
         title: "Agile Collaboration",
         icon: "Users",
         example:
-          "Working in 12-15 people team (PO/BA/EM/Leads/QA/DevOps/Backend/Frontend)",
+          "Working in 12-15 people team (PO, BA, EM, Leads, QA, DevOps, Backend, Frontend)",
         description:
           "Collaborated within Agile (Scrum and Kanban) teams to deliver features on schedule while maintaining high quality and consistency.",
       },
