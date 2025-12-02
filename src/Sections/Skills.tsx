@@ -1,11 +1,15 @@
 import { FC } from "react";
 import { appliedSkills, baseSkills } from "./utils";
+import { Award } from "lucide-react";
 
 const Skills: FC = () => {
   return (
-    <section>
-      <h3 className="section-title">Skills</h3>
-      <div className="section-card">
+    <section id="skills">
+      <h3 className="section-title">
+        <Award size={24} style={{ marginRight: "0.5rem" }} />
+        Skills
+      </h3>
+      <div className="section-card-no-hover">
         <div
           style={{
             display: "flex",

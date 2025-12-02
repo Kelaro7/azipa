@@ -94,7 +94,8 @@ body {
 }
 
 /* Section Card */
-.section-card {
+.section-card,
+.section-card-no-hover {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0, 180, 182, 0.12);
@@ -106,21 +107,26 @@ body {
   margin-bottom: 18px;
   width: 100%;
 }
-.section-card h4 {
+
+.section-card h4,
+.section-card-no-hover h4 {
   color: #00b4b6;
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 12px;
   letter-spacing: 1px;
 }
-.section-card a {
-  color: rgb(0, 180, 182);
+
+.section-card a,
+.section-card-no-hover a {
+  color: #00b4b6;
   font-weight: 600;
   font-size: 1.1rem;
   text-decoration: underline;
   margin-bottom: 12px;
   transition: color 0.2s;
 }
+
 .section-card:hover {
   transform: translateY(-4px);
   background: rgba(0, 180, 182, 0.2);
@@ -189,6 +195,52 @@ body {
   line-height: 1.7;
 }
 
+/* Responsibilities Cards */
+.responsibilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.responsibility-card {
+  background: rgba(0, 180, 182, 0.08);
+  border-left: 3px solid #00b4b6;
+  padding: 12px 16px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.responsibility-card:hover {
+  background: rgba(0, 180, 182, 0.15);
+  transform: translateX(4px);
+}
+
+.responsibility-title {
+  font-weight: 600;
+  color: #00b4b6;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.responsibility-example {
+  color: rgba(0, 180, 182, 0.9);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 180, 182, 0.2);
+}
+
+.responsibility-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 /* Responsive Grid */
 .projects-grid {
   display: grid;
@@ -208,10 +260,15 @@ body {
   margin-top: 32px;
   margin-bottom: 32px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .skill-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #000000;
   color: #ffffff;
   font-weight: 600;
@@ -219,8 +276,8 @@ body {
   border-radius: 12px;
   margin: 4px;
   font-size: 0.9rem;
-  border: 2px solid #00b4b6;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: 0 0 0 2px #00b4b6;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .skill-tag:hover {
   color: #00b4b6;
@@ -281,5 +338,94 @@ body {
 
   .experience-card {
     padding: 14px 8px;
+  }
+}
+
+/* Navbar Styles */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 180, 182, 0.2);
+  padding: 0.75rem 0;
+  margin-bottom: 0;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+.navbar-visible {
+  transform: translateY(0);
+}
+
+.navbar-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-item svg {
+  flex-shrink: 0;
+}
+
+.nav-item:hover {
+  color: #00b4b6;
+  background: rgba(0, 180, 182, 0.1);
+}
+
+.nav-item.active {
+  color: #00b4b6;
+  background: rgba(0, 180, 182, 0.15);
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: #00b4b6;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .navbar-content {
+    gap: 0.25rem;
+  }
+
+  .nav-item {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    min-width: 44px;
+    justify-content: center;
   }
 }

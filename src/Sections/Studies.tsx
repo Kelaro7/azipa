@@ -1,9 +1,13 @@
 import { FC } from "react";
+import { GraduationCap } from "lucide-react";
 
 const Education: FC = () => {
   return (
-    <section>
-      <h3 className="section-title">Education</h3>
+    <section id="education">
+      <h3 className="section-title">
+        <GraduationCap size={24} style={{ marginRight: "0.5rem" }} />
+        Education
+      </h3>
       <div className="section-card">
         <div className="experience-title">
           Software Information Technology – Associate’s Degree

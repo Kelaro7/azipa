@@ -6,9 +6,25 @@ import Header from "./Sections/Header";
 import Projects from "./Sections/Projects";
 import Skills from "./Sections/Skills";
 import Education from "./Sections/Studies";
+import Certifications from "./Sections/Certifications";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    const container = document.querySelector(".portfolio-page");
+    console.log("Scrolling to section:", id);
+    if (element && container) {
+      const y = element.getBoundingClientRect().top + container.scrollTop - 80;
+
+      container.scrollTo({ top: y, behavior: "smooth" });
+
+      // Hash beállítása a címsorban (de nem ugrik fel instant)
+      window.history.pushState(null, "", `#${id}`);
+    }
+  };
 
   useEffect(() => {
     const checkMobile = () => {
@@ -40,6 +56,7 @@ function App() {
         padding: "0 0 0 0",
       }}
     >
+      <Navbar scrollToSection={scrollToSection} />
       <Header />
 
       <main
@@ -52,15 +69,29 @@ function App() {
           padding: "1rem 2rem",
         }}
       >
-        <AboutMe />
+        <div id="about">
+          <AboutMe />
+        </div>
 
-        <Skills />
+        <div id="skills">
+          <Skills />
+        </div>
 
-        <Projects />
+        <div id="projects">
+          <Projects />
+        </div>
 
-        <Experiences />
+        <div id="experience">
+          <Experiences />
+        </div>
 
-        <Education />
+        <div id="education">
+          <Education />
+        </div>
+
+        <div id="certifications">
+          <Certifications />
+        </div>
       </main>
       <Analytics />
     </div>

@@ -1,9 +1,13 @@
 import { FC } from "react";
+import { User } from "lucide-react";
 
 const AboutMe: FC = () => {
   return (
-    <section>
-      <h3 className="section-title">About Me</h3>
+    <section id="about">
+      <h3 className="section-title">
+        <User size={24} style={{ marginRight: "0.5rem" }} />
+        About Me
+      </h3>
       <div className="section-card">
         <p
           style={{
@@ -59,7 +63,8 @@ const AboutMe: FC = () => {
         >
           Enthusiastic about clean code, Agile teamwork, and AI-assisted
           development with{" "}
-          <span style={{ color: "#00b4b6" }}>GitHub Copilot</span>.
+          <span style={{ color: "#00b4b6" }}>GitHub Copilot</span> and{" "}
+          <span style={{ color: "#00b4b6" }}>Cursor</span>.
         </p>
       </div>
     </section>
