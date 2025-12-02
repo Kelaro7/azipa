@@ -224,6 +224,8 @@ body {
   color: #00b4b6;
   font-size: 1rem;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .responsibility-example {
@@ -263,6 +265,48 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Skills Filter */
+.skills-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid rgba(0, 180, 182, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-btn svg {
+  flex-shrink: 0;
+}
+
+.filter-btn:hover {
+  background: rgba(0, 180, 182, 0.1);
+  color: #00b4b6;
+  border-color: #00b4b6;
+}
+
+.filter-btn.active {
+  background: #00b4b6;
+  color: #000;
+  border-color: #00b4b6;
+  font-weight: 600;
 }
 
 .skill-tag {

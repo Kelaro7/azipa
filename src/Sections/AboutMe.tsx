@@ -34,7 +34,7 @@ const AboutMe: FC = () => {
             textAlign: "center",
           }}
         >
-          Active in full-stack projects with{" "}
+          Active in full-stack side projects with{" "}
           <span style={{ color: "#00b4b6" }}>Node.js</span>,{" "}
           <span style={{ color: "#00b4b6" }}>Express</span>, and{" "}
           <span style={{ color: "#00b4b6" }}>Laravel</span>.

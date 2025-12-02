@@ -1,5 +1,6 @@
 interface Responsibility {
   title: string;
+  icon: string;
   example: string;
   description: string;
 }
@@ -27,44 +28,51 @@ export const experiences: Experience[] = [
     responsibilities: [
       {
         title: "Web Development",
-        example: "e.g., Big admin project with multiple features and modules",
+        icon: "Code2",
+        example: "Big admin project with multiple features and modules",
         description:
-          "Developed scalable, high-performance web applications using React.js, Next.js, TypeScript, and Redux, ensuring optimal performance and maintainability.",
+          "Developed scalable, high-performance web applications using React.js, Next.js, TypeScript, and Redux, ensuring optimal performance and maintainability for a product used by millions of users.",
       },
       {
         title: "API Integration",
-        example: "e.g., Redux-Saga for handling PHP RESTful APIs",
+        icon: "Plug",
+        example: "Redux-Saga for handling PHP RESTful APIs",
         description:
           "Integrated RESTful APIs built with Node.js and PHP, enabling dynamic, data-driven features across multiple modules.",
       },
       {
         title: "Analytics Implementation",
-        example: "e.g., Self-hosted Matomo analytics for the main project",
+        icon: "BarChart3",
+        example: "Self-hosted Matomo analytics for the main project",
         description:
           "Implemented analytics from scratch and integrated it into the project, providing advanced tracking and user insights for product optimization.",
       },
       {
         title: "Agile Collaboration",
+        icon: "Users",
         example:
-          "e.g., Working in 12-15 people team (PO/BA/EM/Leads/DevOps/Backend/Frontend)",
+          "Working in 12-15 people team (PO/BA/EM/Leads/QA/DevOps/Backend/Frontend)",
         description:
           "Collaborated within Agile (Scrum and Kanban) teams to deliver features on schedule while maintaining high quality and consistency.",
       },
       {
         title: "Code Quality",
-        example: "e.g., Conducting and participating in code reviews",
+        icon: "FileCheck",
+        example: "Conducting and participating in code reviews",
         description:
           "Adhered to best coding practices, ensuring clean, reusable, and maintainable code following industry standards.",
       },
       {
         title: "UI/UX Enhancement",
-        example: "e.g., Testing UX/UI across multiple devices and browsers",
+        icon: "Palette",
+        example: "Testing UX/UI across multiple devices and browsers",
         description:
           "Contributed to UI/UX improvements, enhancing accessibility, responsiveness, and overall user experience across platforms.",
       },
       {
         title: "Design Implementation",
-        example: "e.g., Collaborating with designers on Figma designs",
+        icon: "Paintbrush",
+        example: "Collaborating with designers on Figma designs",
         description:
           "Translated Figma designs into pixel-perfect, responsive components aligned with design and branding guidelines.",
       },
@@ -77,25 +85,29 @@ export const experiences: Experience[] = [
     responsibilities: [
       {
         title: "Tech Stack Learning",
-        example: "e.g., React, TypeScript, Redux, Redux-Saga, Chakra UI",
+        icon: "BookOpen",
+        example: "React, TypeScript, Redux, Redux-Saga, Chakra UI",
         description:
           "Gained hands-on experience with modern frontend technologies and libraries.",
       },
       {
         title: "Component Development",
-        example: "e.g., Reusable UI components and state management",
+        icon: "Boxes",
+        example: "Reusable UI components and state management",
         description:
           "Assisted in building reusable components and managing application state.",
       },
       {
         title: "Code Practices",
-        example: "e.g., Mentorship on clean code and architecture",
+        icon: "GitBranch",
+        example: "Mentorship on clean code and architecture",
         description:
           "Worked under mentorship to improve component architecture and clean code practices.",
       },
       {
         title: "Team Collaboration",
-        example: "e.g., Team meetings and code reviews",
+        icon: "MessageSquare",
+        example: "Team meetings and code reviews",
         description:
           "Participated in team meetings and code reviews to enhance collaboration and technical quality.",
       },
@@ -108,13 +120,15 @@ export const experiences: Experience[] = [
     responsibilities: [
       {
         title: "Security Operations",
-        example: "e.g., Site security and personnel safety",
+        icon: "Shield",
+        example: "Site security and personnel safety",
         description:
           "Ensured the safety and security of personnel and property across company sites.",
       },
       {
         title: "Career Transition",
-        example: "e.g., From security to software development",
+        icon: "TrendingUp",
+        example: "From security to software development",
         description:
           "Inspired by the innovative IT environment, transitioned toward software development and began studies in software technology.",
       },
@@ -146,6 +160,47 @@ export const projects: Project[] = [
   },
 ];
 
+interface Skill {
+  name: string;
+  category: "frontend" | "backend" | "devops" | "tools" | "other";
+}
+
+export const skills: Skill[] = [
+  // Frontend (Main Skills)
+  { name: "React", category: "frontend" },
+  { name: "Next.js", category: "frontend" },
+  { name: "TypeScript", category: "frontend" },
+  { name: "Redux", category: "frontend" },
+  { name: "Redux-Saga", category: "frontend" },
+  { name: "Chakra UI", category: "frontend" },
+  { name: "TailwindCSS", category: "frontend" },
+  { name: "Vanilla JS", category: "frontend" },
+
+  // Backend
+  { name: "Node.js", category: "backend" },
+  { name: "Express", category: "backend" },
+  { name: "PHP", category: "backend" },
+  { name: "Laravel", category: "backend" },
+  { name: "REST API Integration", category: "backend" },
+  { name: "MongoDB", category: "backend" },
+  { name: "Supabase", category: "backend" },
+
+  // DevOps & Tools
+  { name: "Git", category: "devops" },
+  { name: "Jenkins", category: "devops" },
+  { name: "CI/CD", category: "devops" },
+  { name: "Vercel", category: "devops" },
+  { name: "Render", category: "devops" },
+
+  // Tools & Other
+  { name: "Figma", category: "tools" },
+  { name: "GitHub Copilot", category: "tools" },
+  { name: "Matomo Analytics", category: "tools" },
+  { name: "Jest", category: "tools" },
+  { name: "Agile (Scrum / Kanban)", category: "other" },
+];
+
+// Legacy exports for backward compatibility
 export const baseSkills: string[] = [
   "React",
   "Next.js",

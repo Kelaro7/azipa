@@ -15,7 +15,6 @@ function App() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     const container = document.querySelector(".portfolio-page");
-    console.log("Scrolling to section:", id);
     if (element && container) {
       const y = element.getBoundingClientRect().top + container.scrollTop - 80;
 

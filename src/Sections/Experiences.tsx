@@ -1,6 +1,37 @@
 import { FC } from "react";
 import { experiences } from "./utils";
-import { Briefcase } from "lucide-react";
+import {
+  Briefcase,
+  Code2,
+  Plug,
+  BarChart3,
+  Users,
+  FileCheck,
+  Palette,
+  Paintbrush,
+  BookOpen,
+  Boxes,
+  GitBranch,
+  MessageSquare,
+  Shield,
+  TrendingUp,
+} from "lucide-react";
+
+const iconMap: Record<string, any> = {
+  Code2,
+  Plug,
+  BarChart3,
+  Users,
+  FileCheck,
+  Palette,
+  Paintbrush,
+  BookOpen,
+  Boxes,
+  GitBranch,
+  MessageSquare,
+  Shield,
+  TrendingUp,
+};
 
 const Experiences: FC = () => {
   return (
@@ -15,17 +46,25 @@ const Experiences: FC = () => {
           <div className="experience-company">{exp.company}</div>
           <div className="experience-date">{exp.date}</div>
           <div className="responsibilities-grid">
-            {exp.responsibilities.map((resp, i) => (
-              <div className="responsibility-card" key={i}>
-                <div className="responsibility-title">{resp.title}</div>
-                <div className="responsibility-description">
-                  {resp.description}
+            {exp.responsibilities.map((resp, i) => {
+              const Icon = iconMap[resp.icon];
+              return (
+                <div className="responsibility-card" key={i}>
+                  <div className="responsibility-title">
+                    {Icon && (
+                      <Icon size={18} style={{ marginRight: "0.5rem" }} />
+                    )}
+                    {resp.title}
+                  </div>
+                  <div className="responsibility-description">
+                    {resp.description}
+                  </div>
+                  {resp.example && (
+                    <div className="responsibility-example">{resp.example}</div>
+                  )}
                 </div>
-                {resp.example && (
-                  <div className="responsibility-example">{resp.example}</div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}
