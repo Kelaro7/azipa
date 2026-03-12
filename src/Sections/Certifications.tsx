@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Trophy } from "lucide-react";
 
 const Certifications: FC = () => {
@@ -9,11 +9,11 @@ const Certifications: FC = () => {
         Certifications
       </h3>
       <div className="section-card">
-        <div className="experience-title">
+        <div className="accordion-title">
           Ultimate AWS Certified Cloud Practitioner CLF-C02 2026
         </div>
-        <div className="experience-company">Amazon Web Services (AWS)</div>
-        <div className="experience-date">Dec 2025</div>
+        <div className="accordion-subtitle">Amazon Web Services (AWS)</div>
+        <div className="accordion-date">Dec 2025</div>
         <div>
           <img
             src="/cloud-aws.webp"

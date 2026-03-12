@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { Download } from "lucide-react";
+import React, { FC } from "react";
 
 const Resume: FC = () => {
   const handleDownload = () => {
@@ -12,9 +13,10 @@ const Resume: FC = () => {
   };
 
   return (
-    <div>
+    <div className="header-button-container">
       <button className="resume-button" onClick={handleDownload}>
-        Download My Resume
+        <Download size={16} style={{ marginRight: "8px" }} />
+        <span>Download My Resume</span>
       </button>
     </div>
   );

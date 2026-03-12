@@ -22,6 +22,48 @@ interface Project {
 
 export const experiences: Experience[] = [
   {
+    title: "Software Developer – Frontend",
+    company: "Assa Abloy",
+    date: "Feb 2026 – Present",
+    responsibilities: [
+      {
+        title: "React 19 Development",
+        icon: "Code2",
+        example: "Building modern web applications with React 19 and AI-assisted development",
+        description:
+          "Developing frontend applications using React 19 with active Cursor AI usage, leveraging the latest React features and AI-powered tooling to boost productivity and code quality.",
+      },
+      {
+        title: "Blazor to React Migration",
+        icon: "GitBranch",
+        example: "Refactoring legacy Blazor application to React 19",
+        description:
+          "Assisting in the refactoring of an existing Blazor application to React 19, ensuring feature parity and improved maintainability during the migration process.",
+      },
+      {
+        title: "OpenAPI Integration",
+        icon: "Plug",
+        example: "Type-safe API client generation from OpenAPI specs",
+        description:
+          "Handling OpenAPI specifications for seamless API integration, enabling auto-generated type-safe clients and consistent contract-first development.",
+      },
+      {
+        title: "Design System",
+        icon: "Palette",
+        example: "Implementing a unified design system across projects",
+        description:
+          "Implementing a design system to ensure visual consistency, accessibility, and a cohesive user experience across all web projects.",
+      },
+      {
+        title: "Component Library",
+        icon: "Boxes",
+        example: "Custom reusable component library for new web projects",
+        description:
+          "Building a custom components library tailored for new web projects, providing reusable, well-documented, and tested UI building blocks to accelerate development.",
+      },
+    ],
+  },
+  {
     title: "Software Engineer – Frontend",
     company: "Byborg Enterprises",
     date: "Nov 2023 – Oct 2025",
@@ -154,7 +196,7 @@ export const projects: Project[] = [
   {
     name: "www.magyandrol.hu",
     url: "https://www.magyandrol.hu/",
-    description: `Asked to update the website, but creating a new one from scratch was faster. Replaced the old classic PHP webapp with a modern tech stack. (In progress)`,
+    description: `Asked to update the website, but creating a new one from scratch was faster. Replaced the old classic PHP webapp with a modern tech stack.`,
     stack: "Next.js, React, TailwindCSS, Supabase, Vercel",
     logo: "/magyandrol-logo.webp",
   },
@@ -185,9 +227,10 @@ export const skills: Skill[] = [
   { name: "MongoDB", category: "backend" },
   { name: "Supabase", category: "backend" },
 
-  // DevOps & Tools
+  // DevOps & Toolss
   { name: "Git", category: "devops" },
   { name: "Jenkins", category: "devops" },
+  { name: "Bitbucket Pipelines", category: "devops" },
   { name: "CI/CD", category: "devops" },
   { name: "Vercel", category: "devops" },
   { name: "Render", category: "devops" },
@@ -195,6 +238,7 @@ export const skills: Skill[] = [
   // Tools & Other
   { name: "Figma", category: "tools" },
   { name: "GitHub Copilot", category: "tools" },
+  { name: "Cursor", category: "tools" },
   { name: "Matomo Analytics", category: "tools" },
   { name: "Jest", category: "tools" },
   { name: "Agile (Scrum / Kanban)", category: "other" },
@@ -216,6 +260,7 @@ export const baseSkills: string[] = [
   "Figma",
   "Matomo Analytics",
   "Jest",
+  "Cursor",
   "CI/CD",
 ];
 

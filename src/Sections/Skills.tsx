@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState, useRef } from "react";
 import { skills } from "./utils";
 import {
   Award,
@@ -8,6 +8,8 @@ import {
   Gauge,
   Wrench,
   MoreHorizontal,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 type SkillFilter =
@@ -19,7 +21,9 @@ type SkillFilter =
   | "other";
 
 const Skills: FC = () => {
-  const [filter, setFilter] = useState<SkillFilter>("all");
+  const [filter, setFilter] = useState<SkillFilter>("frontend");
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const filteredSkills =
     filter === "all"
@@ -35,37 +39,59 @@ const Skills: FC = () => {
     other: { label: "Other", icon: MoreHorizontal },
   };
 
+  const skillFilters = [
+    "all",
+    "frontend",
+    "backend",
+    "devops",
+    "tools",
+    "other",
+  ] as SkillFilter[]
+
   return (
-    <section id="skills">
+    <section id="skills" ref={sectionRef}>
       <h3 className="section-title">
         <Award size={24} style={{ marginRight: "0.5rem" }} />
         Skills
       </h3>
       <div className="section-card-no-hover">
-        {/* Filter Buttons */}
-        <div className="skills-filter">
-          {(
-            [
-              "all",
-              "frontend",
-              "backend",
-              "devops",
-              "tools",
-              "other",
-            ] as SkillFilter[]
-          ).map((cat) => {
-            const Icon = categoryConfig[cat].icon;
-            return (
-              <button
-                key={cat}
-                className={`filter-btn ${filter === cat ? "active" : ""}`}
-                onClick={() => setFilter(cat)}
-              >
-                <Icon size={16} />
-                <span>{categoryConfig[cat].label}</span>
-              </button>
-            );
-          })}
+        <div className="skills-filter-wrapper">
+          <button
+            className="skills-filter-arrow skills-filter-arrow--left"
+            onClick={() => {
+              scrollRef.current?.scrollBy({ left: -150, behavior: "smooth" });
+            }}
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <div className="skills-filter" ref={scrollRef}>
+            {skillFilters.map((cat) => {
+              const Icon = categoryConfig[cat].icon;
+              return (
+                <button
+                  key={cat}
+                  className={`filter-btn ${filter === cat ? "active" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setFilter(cat);
+                  }}
+                >
+                  <Icon size={16} />
+                  <span>{categoryConfig[cat].label}</span>
+                </button>
+              );
+            })}
+          </div>
+          <button
+            className="skills-filter-arrow skills-filter-arrow--right"
+            onClick={() => {
+              scrollRef.current?.scrollBy({ left: 150, behavior: "smooth" });
+            }}
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
 
         {/* Skills Display */}
@@ -75,6 +101,7 @@ const Skills: FC = () => {
             flexWrap: "wrap",
             gap: "8px",
             justifyContent: "center",
+            minHeight: "80px",
           }}
         >
           {filteredSkills.map((skill) => (

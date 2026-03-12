@@ -1,6 +1,6 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { projects } from "./utils";
-import { FolderGit2 } from "lucide-react";
+import { FolderGit2, ExternalLink } from "lucide-react";
 
 const Projects: FC = () => {
   return (
@@ -9,31 +9,27 @@ const Projects: FC = () => {
         <FolderGit2 size={24} style={{ marginRight: "0.5rem" }} />
         Side Projects
       </h3>
-      <div className="projects-grid">
+      <div className="projects-scroll">
         {projects.map((project) => (
-          <div
-            className="section-card"
-            style={{ margin: "0px" }}
-            key={project.name}
-          >
+          <div className="project-card" key={project.name}>
             {project.logo && (
-              <div style={{ marginBottom: "1rem" }}>
-                <img
-                  src={project.logo}
-                  alt={`${project.name} logo`}
-                  style={{
-                    maxWidth: "80px",
-                    height: "auto",
-                    borderRadius: "8px",
-                  }}
-                />
-              </div>
+              <img
+                src={project.logo}
+                alt={`${project.name} logo`}
+                className="project-card-logo"
+              />
             )}
-            <a href={project.url} target="_blank" rel="noopener">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener"
+              className="project-card-name"
+            >
               {project.name}
+              <ExternalLink size={14} />
             </a>
-            <p>{project.description}</p>
-            <div className="stack">Stack: {project.stack}</div>
+            <p className="project-card-desc">{project.description}</p>
+            <div className="project-card-stack">Stack: {project.stack}</div>
           </div>
         ))}
       </div>

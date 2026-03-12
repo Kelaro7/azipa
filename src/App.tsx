@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AboutMe from "./Sections/AboutMe";
 import Experiences from "./Sections/Experiences";
 import Header from "./Sections/Header";

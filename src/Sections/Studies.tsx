@@ -1,32 +1,32 @@
-import { FC } from "react";
+import React, { FC, useState } from "react";
 import { GraduationCap } from "lucide-react";
+import AccordionCard from "../components/AccordionCard";
 
 const Education: FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section id="education">
       <h3 className="section-title">
         <GraduationCap size={24} style={{ marginRight: "0.5rem" }} />
         Education
       </h3>
-      <div className="section-card">
-        <div className="experience-title">
-          Software Information Technology – Associate’s Degree
-        </div>
-        <div className="experience-company">
-          MATE University (Magyar Agrár- és Élettudományi Egyetem)
-        </div>
-        <div className="experience-date">2021 – 2024</div>
-        <ul className="experience-list">
-          <li>
-            Completed a multidisciplinary degree combining software development,
-            databases, and IT systems with business fundamentals.
-          </li>
-          <li>
-            Developed a strong interest in web development, forming the
-            foundation for a career in frontend engineering.
-          </li>
-        </ul>
-      </div>
+      <AccordionCard
+        title="Software Information Technology – Associate's Degree"
+        subtitle="MATE University (Magyar Agrár- és Élettudományi Egyetem)"
+        date="2021 – 2024"
+        isOpen={isOpen}
+        onToggle={() => setIsOpen((prev) => !prev)}
+      >
+        <p className="accordion-paragraph">
+          Completed a multidisciplinary degree combining software development,
+          databases, and IT systems with business fundamentals.
+        </p>
+        <p className="accordion-paragraph">
+          Developed a strong interest in web development, forming the foundation
+          for a career in frontend engineering.
+        </p>
+      </AccordionCard>
     </section>
   );
 };
