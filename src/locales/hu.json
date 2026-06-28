@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "about": "Rólam",
+    "skills": "Készségek",
+    "projects": "Projektek",
+    "experience": "Tapasztalat",
+    "education": "Tanulmányok",
+    "certifications": "Tanúsítványok"
+  },
+  "header": {
+    "name": "Czipa András",
+    "role": "Frontend fejlesztő | React, Next.js, TypeScript",
+    "location": "Magyarország",
+    "messageMe": "Üzenet küldése",
+    "callMe": "Hívás",
+    "resume": "Önéletrajz",
+    "tryAgain": "Újrapróbálás",
+    "linkedinAlt": "LinkedIn"
+  },
+  "footer": {
+    "backToTop": "Vissza a tetejére",
+    "linkedin": "LinkedIn",
+    "copyright": "© 2026 Czipa András"
+  },
+  "contact": {
+    "title": "Küldj üzenetet",
+    "namePlaceholder": "Neved",
+    "emailPlaceholder": "E-mail címed",
+    "subjectPlaceholder": "Tárgy",
+    "messagePlaceholder": "Üzeneted...",
+    "send": "Küldés",
+    "sending": "Küldés...",
+    "close": "Bezárás",
+    "tryAgain": "Újrapróbálás",
+    "successTitle": "Üzenet elküldve!",
+    "successText": "Köszönöm a megkeresést. Hamarosan válaszolok.",
+    "errorTitle": "Valami hiba történt",
+    "errorText": "Kérlek, próbáld újra később.",
+    "closeAria": "Bezárás"
+  },
+  "about": {
+    "title": "Rólam",
+    "p1": "<strong>Frontend fejlesztő</strong> vagyok, aki professzionális tapasztalattal rendelkezik skálázható webalkalmazások építésében <1>React</1>, <1>Next.js</1>, <1>TypeScript</1> és <1>Redux</1> használatával.",
+    "p2": "Aktívan dolgozom full-stack mellékprojekteken <1>Node.js</1>, <1>Express</1> és <1>Laravel</1> technológiákkal.",
+    "p3": "Tapasztalt vagyok REST API-k (Node.js és PHP) integrálásában, valamint mellékprojektek telepítésében felhőplatformokon, mint a <1>Vercel</1> és a <1>Render</1>.",
+    "p4": "Szenvedélyem a tiszta kód, az Agile csapatmunka és az AI-asszisztált fejlesztés <1>GitHub Copilot</1> és <1>Cursor</1> segítségével."
+  },
+  "skills": {
+    "title": "Készségek",
+    "all": "Összes",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "devops": "DevOps",
+    "tools": "Eszközök",
+    "other": "Egyéb",
+    "scrollLeft": "Görgetés balra",
+    "scrollRight": "Görgetés jobbra"
+  },
+  "projects": {
+    "title": "Mellékprojektek",
+    "stack": "Stack: {{stack}}",
+    "logoAlt": "{{name}} logó",
+    "hashtagselfie": {
+      "description": "Teljes egészében én fejlesztettem. Tartalmaz egy teljes backend rendszert és admin felületet a foglalások kezeléséhez. Automatizált e-mailek, foglalási státuszváltások és még sok más."
+    },
+    "repteresparkolo": {
+      "description": "Karbantartom az oldalt és új funkciókat fejlesztek. A landing page Wordpress-sel készült. Az admin felület egyedi fejlesztésű PHP (Laravel), vanilla JS, HTML és CSS alapokon."
+    },
+    "magyandrol": {
+      "description": "Frissítést kértek, de gyorsabbnak bizonyult nulláról újat építeni. A régi klasszikus PHP webappot modern tech stackkel váltottam fel."
+    }
+  },
+  "experience": {
+    "title": "Tapasztalat",
+    "items": {
+      "assaAbloy": {
+        "title": "Szoftverfejlesztő – Frontend",
+        "date": "2026 – jelenleg",
+        "responsibilities": {
+          "greenfield": {
+            "title": "Greenfield termékfejlesztés",
+            "example": "Teljesen új termék architektúrája és fejlesztése React 19, TypeScript és GraphQL használatával",
+            "description": "Az első naptól aktívan részt vettem egy teljesen új termék architektúrájában és fejlesztésében React 19 és TypeScript használatával, GraphQL-lel a modern, hatékony adatlekérésért."
+          },
+          "legacy": {
+            "title": "Legacy modernizáció és platformbővítés",
+            "example": "Blazor rendszerek refaktorálása React 19-re Desktop, Kiosk, Tablet és Mobile platformokon",
+            "description": "Legacy Blazor rendszereket refaktoráltam modern React 19 alkalmazásokká több platformon (Desktop, Kiosk, Tablet és Mobile), OpenAPI-alapú, type-safe REST API kliens generálással."
+          },
+          "ai": {
+            "title": "AI-alapú hatékonyság",
+            "example": "Fejlesztés gyorsítása Cursor AI-val a napi munkafolyamatban",
+            "description": "Felgyorsítottam a fejlesztési ciklusokat és optimalizáltam a kódminőséget fejlett AI-asszisztált kódoló eszközök (Cursor AI) integrálásával a napi munkafolyamatba."
+          },
+          "designSystems": {
+            "title": "Design Systemek",
+            "example": "Cégszintű Design System és UI Component Library",
+            "description": "Hozzájárultam egy cégszintű Design System és UI Component Library implementálásához a vizuális konzisztencia és a time-to-market drasztikus csökkentése érdekében."
+          }
+        }
+      },
+      "byborgEngineer": {
+        "title": "Szoftvermérnök – Frontend",
+        "date": "2023. nov. – 2025. okt.",
+        "responsibilities": {
+          "webDev": {
+            "title": "Webfejlesztés",
+            "example": "Nagy admin projekt több modullal és funkcióval",
+            "description": "Skálázható, nagy teljesítményű webalkalmazásokat fejlesztettem React.js, Next.js, TypeScript és Redux használatával, milliós felhasználószámú termékhez."
+          },
+          "api": {
+            "title": "API integráció",
+            "example": "Redux-Saga PHP RESTful API-k kezelésére",
+            "description": "Node.js és PHP alapú RESTful API-kat integráltam, dinamikus, adatvezérelt funkciókat biztosítva több modulban."
+          },
+          "analytics": {
+            "title": "Analitika implementáció",
+            "example": "Self-hosted Matomo analitika a fő projekthez",
+            "description": "Nulláról implementáltam és integráltam az analitikát a projektbe, fejlett követést és felhasználói betekintést biztosítva."
+          },
+          "agile": {
+            "title": "Agile együttműködés",
+            "example": "12-15 fős csapat (PO, BA, EM, Leadek, QA, DevOps, Backend, Frontend)",
+            "description": "Agile (Scrum és Kanban) csapatokban dolgoztam, időben szállítva a feature-öket magas minőség mellett."
+          },
+          "codeQuality": {
+            "title": "Kódminőség",
+            "example": "Code review-k vezetése és részvétel",
+            "description": "A legjobb kódolási gyakorlatokat követtem, tiszta, újrafelhasználható és karbantartható kódot biztosítva."
+          },
+          "uiux": {
+            "title": "UI/UX fejlesztés",
+            "example": "UX/UI tesztelés több eszközön és böngészőben",
+            "description": "Hozzájárultam UI/UX fejlesztésekhez, javítva az akadálymentességet, reszponzivitást és felhasználói élményt."
+          },
+          "design": {
+            "title": "Design implementáció",
+            "example": "Együttműködés designerekkel Figma terveken",
+            "description": "Figma designokat pixelpontos, reszponzív komponensekké alakítottam a design irányelveknek megfelelően."
+          }
+        }
+      },
+      "byborgIntern": {
+        "title": "Frontend fejlesztő gyakornok",
+        "date": "2023. márc. – 2023. jún.",
+        "responsibilities": {
+          "learning": {
+            "title": "Tech stack tanulás",
+            "example": "React, TypeScript, Redux, Redux-Saga, Chakra UI",
+            "description": "Gyakorlati tapasztalatot szereztem modern frontend technológiákkal és könyvtárakkal."
+          },
+          "components": {
+            "title": "Komponens fejlesztés",
+            "example": "Újrafelhasználható UI komponensek és state management",
+            "description": "Segítettem újrafelhasználható komponensek építésében és az alkalmazás állapotkezelésében."
+          },
+          "practices": {
+            "title": "Kódolási gyakorlatok",
+            "example": "Mentorálás clean code és architektúra terén",
+            "description": "Mentorálás mellett dolgoztam a komponens architektúra és clean code gyakorlatok fejlesztésén."
+          },
+          "collaboration": {
+            "title": "Csapatmunka",
+            "example": "Csapatmegbeszélések és code review-k",
+            "description": "Részt vettem csapatmegbeszéléseken és code review-kon az együttműködés és technikai minőség javítása érdekében."
+          }
+        }
+      },
+      "security": {
+        "title": "Biztonsági őr",
+        "date": "2019 – 2023",
+        "responsibilities": {
+          "operations": {
+            "title": "Biztonsági műveletek",
+            "example": "Telephelyi biztonság és személyzet védelme",
+            "description": "Biztosítottam a személyzet és ingatlan biztonságát a vállalati telephelyeken."
+          },
+          "transition": {
+            "title": "Karrierváltás",
+            "example": "A biztonságtól a szoftverfejlesztésig",
+            "description": "Az innovatív IT környezet inspirált a szoftverfejlesztés felé való elmozdulásra és a szoftvertechnológiai tanulmányok megkezdésére."
+          }
+        }
+      }
+    }
+  },
+  "education": {
+    "title": "Tanulmányok",
+    "degree": "Szoftverinformátor – főiskolai szakképzettség",
+    "university": "MATE Egyetem (Magyar Agrár- és Élettudományi Egyetem)",
+    "date": "2021 – 2024",
+    "p1": "Multidiszciplináris képzést végeztem, amely ötvözi a szoftverfejlesztést, adatbázisokat és IT rendszereket üzleti alapokkal.",
+    "p2": "Erős érdeklődést alakítottam ki a webfejlesztés iránt, amely a frontend mérnöki karrierem alapjává vált."
+  },
+  "certifications": {
+    "title": "Tanúsítványok",
+    "awsTitle": "Ultimate AWS Certified Cloud Practitioner CLF-C02 2026",
+    "awsIssuer": "Amazon Web Services (AWS)",
+    "awsDate": "2025. dec.",
+    "awsAlt": "AWS Cloud Practitioner tanúsítvány"
+  },
+  "resume": {
+    "download": "Önéletrajz letöltése",
+    "tryAgain": "Újrapróbálás"
+  },
+  "language": {
+    "en": "EN",
+    "hu": "HU",
+    "switch": "Nyelv"
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "certifications": "Certifications"
+  },
+  "header": {
+    "name": "András Czipa",
+    "role": "Frontend Developer | React, Next.js, TypeScript",
+    "location": "Hungary",
+    "messageMe": "Message me",
+    "callMe": "Call me",
+    "resume": "Resume",
+    "tryAgain": "Try again",
+    "linkedinAlt": "LinkedIn"
+  },
+  "footer": {
+    "backToTop": "Back to top",
+    "linkedin": "LinkedIn",
+    "copyright": "© 2026 András Czipa"
+  },
+  "contact": {
+    "title": "Send me a message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email",
+    "subjectPlaceholder": "Subject",
+    "messagePlaceholder": "Your message...",
+    "send": "Send",
+    "sending": "Sending...",
+    "close": "Close",
+    "tryAgain": "Try again",
+    "successTitle": "Message sent!",
+    "successText": "Thanks for reaching out. I'll get back to you soon.",
+    "errorTitle": "Something went wrong",
+    "errorText": "Please try again later.",
+    "closeAria": "Close"
+  },
+  "about": {
+    "title": "About Me",
+    "p1": "<strong>Frontend Developer</strong> with professional experience in building scalable web applications using <1>React</1>, <1>Next.js</1>, <1>TypeScript</1>, and <1>Redux</1>.",
+    "p2": "Active in full-stack side projects with <1>Node.js</1>, <1>Express</1>, and <1>Laravel</1>.",
+    "p3": "Experienced in integrating REST APIs (Node.js and PHP) and deploying side projects on cloud platforms such as <1>Vercel</1> and <1>Render</1>.",
+    "p4": "Enthusiastic about clean code, Agile teamwork, and AI-assisted development with <1>GitHub Copilot</1> and <1>Cursor</1>."
+  },
+  "skills": {
+    "title": "Skills",
+    "all": "All Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "devops": "DevOps",
+    "tools": "Tools",
+    "other": "Other",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right"
+  },
+  "projects": {
+    "title": "Side Projects",
+    "stack": "Stack: {{stack}}",
+    "logoAlt": "{{name}} logo",
+    "hashtagselfie": {
+      "description": "Fully developed by me. Includes a complete backend system and an admin page to handle bookings from the site. Features automated emails, booking status changes, and more."
+    },
+    "repteresparkolo": {
+      "description": "I maintain this page and develop new features. The landing page is built with Wordpress. The admin page is custom-built using PHP (Laravel), vanilla JS, HTML, and CSS."
+    },
+    "magyandrol": {
+      "description": "Asked to update the website, but creating a new one from scratch was faster. Replaced the old classic PHP webapp with a modern tech stack."
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "items": {
+      "assaAbloy": {
+        "title": "Software Developer – Frontend",
+        "date": "2026 – Present",
+        "responsibilities": {
+          "greenfield": {
+            "title": "Greenfield Product Development",
+            "example": "Architecting a brand-new product from scratch with React 19, TypeScript, and GraphQL",
+            "description": "Actively involved from day one in architecting and developing a brand-new product from scratch using React 19 and TypeScript, leveraging GraphQL for modern, efficient data fetching."
+          },
+          "legacy": {
+            "title": "Legacy Modernization & Platform Expansion",
+            "example": "Refactoring Blazor systems into React 19 across Desktop, Kiosk, Tablet, and Mobile",
+            "description": "Refactored legacy Blazor systems into modern React 19 applications across multiple platforms (Desktop, Kiosk, Tablet, and Mobile apps), streamlining integrations via OpenAPI-driven, type-safe REST API client generation."
+          },
+          "ai": {
+            "title": "AI-Driven Efficiency",
+            "example": "Accelerating development with Cursor AI in the daily workflow",
+            "description": "Accelerated development lifecycles and optimized code quality by integrating advanced AI-assisted coding tools (Cursor AI) into the daily workflow."
+          },
+          "designSystems": {
+            "title": "Design Systems",
+            "example": "Company-wide Design System and UI Component Library",
+            "description": "Contributed to the implementation of a company-wide Design System and UI Component Library to ensure visual consistency and drastically reduce time-to-market."
+          }
+        }
+      },
+      "byborgEngineer": {
+        "title": "Software Engineer – Frontend",
+        "date": "Nov 2023 – Oct 2025",
+        "responsibilities": {
+          "webDev": {
+            "title": "Web Development",
+            "example": "Big admin project with multiple features and modules",
+            "description": "Developed scalable, high-performance web applications using React.js, Next.js, TypeScript, and Redux, ensuring optimal performance and maintainability for a product used by millions of users."
+          },
+          "api": {
+            "title": "API Integration",
+            "example": "Redux-Saga for handling PHP RESTful APIs",
+            "description": "Integrated RESTful APIs built with Node.js and PHP, enabling dynamic, data-driven features across multiple modules."
+          },
+          "analytics": {
+            "title": "Analytics Implementation",
+            "example": "Self-hosted Matomo analytics for the main project",
+            "description": "Implemented analytics from scratch and integrated it into the project, providing advanced tracking and user insights for product optimization."
+          },
+          "agile": {
+            "title": "Agile Collaboration",
+            "example": "Working in 12-15 people team (PO, BA, EM, Leads, QA, DevOps, Backend, Frontend)",
+            "description": "Collaborated within Agile (Scrum and Kanban) teams to deliver features on schedule while maintaining high quality and consistency."
+          },
+          "codeQuality": {
+            "title": "Code Quality",
+            "example": "Conducting and participating in code reviews",
+            "description": "Adhered to best coding practices, ensuring clean, reusable, and maintainable code following industry standards."
+          },
+          "uiux": {
+            "title": "UI/UX Enhancement",
+            "example": "Testing UX/UI across multiple devices and browsers",
+            "description": "Contributed to UI/UX improvements, enhancing accessibility, responsiveness, and overall user experience across platforms."
+          },
+          "design": {
+            "title": "Design Implementation",
+            "example": "Collaborating with designers on Figma designs",
+            "description": "Translated Figma designs into pixel-perfect, responsive components aligned with design and branding guidelines."
+          }
+        }
+      },
+      "byborgIntern": {
+        "title": "Frontend Developer Intern",
+        "date": "Mar 2023 – Jun 2023",
+        "responsibilities": {
+          "learning": {
+            "title": "Tech Stack Learning",
+            "example": "React, TypeScript, Redux, Redux-Saga, Chakra UI",
+            "description": "Gained hands-on experience with modern frontend technologies and libraries."
+          },
+          "components": {
+            "title": "Component Development",
+            "example": "Reusable UI components and state management",
+            "description": "Assisted in building reusable components and managing application state."
+          },
+          "practices": {
+            "title": "Code Practices",
+            "example": "Mentorship on clean code and architecture",
+            "description": "Worked under mentorship to improve component architecture and clean code practices."
+          },
+          "collaboration": {
+            "title": "Team Collaboration",
+            "example": "Team meetings and code reviews",
+            "description": "Participated in team meetings and code reviews to enhance collaboration and technical quality."
+          }
+        }
+      },
+      "security": {
+        "title": "Security Officer",
+        "date": "2019 – 2023",
+        "responsibilities": {
+          "operations": {
+            "title": "Security Operations",
+            "example": "Site security and personnel safety",
+            "description": "Ensured the safety and security of personnel and property across company sites."
+          },
+          "transition": {
+            "title": "Career Transition",
+            "example": "From security to software development",
+            "description": "Inspired by the innovative IT environment, transitioned toward software development and began studies in software technology."
+          }
+        }
+      }
+    }
+  },
+  "education": {
+    "title": "Education",
+    "degree": "Software Information Technology – Associate's Degree",
+    "university": "MATE University (Magyar Agrár- és Élettudományi Egyetem)",
+    "date": "2021 – 2024",
+    "p1": "Completed a multidisciplinary degree combining software development, databases, and IT systems with business fundamentals.",
+    "p2": "Developed a strong interest in web development, forming the foundation for a career in frontend engineering."
+  },
+  "certifications": {
+    "title": "Certifications",
+    "awsTitle": "Ultimate AWS Certified Cloud Practitioner CLF-C02 2026",
+    "awsIssuer": "Amazon Web Services (AWS)",
+    "awsDate": "Dec 2025",
+    "awsAlt": "AWS Cloud Practitioner Certification"
+  },
+  "resume": {
+    "download": "Download My Resume",
+    "tryAgain": "Try again"
+  },
+  "language": {
+    "en": "EN",
+    "hu": "HU",
+    "switch": "Language"
+  }
+}

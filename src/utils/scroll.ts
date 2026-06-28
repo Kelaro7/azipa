@@ -1,43 +1,32 @@
-export function getScrollRoot(): Element | Window {
-  const container = document.querySelector(".portfolio-page");
-  if (
-    container instanceof HTMLElement &&
-    container.scrollHeight > container.clientHeight + 1
-  ) {
+const SCROLL_SELECTOR = ".portfolio-scroll";
+
+export function getScrollRoot(): HTMLElement {
+  const container = document.querySelector(SCROLL_SELECTOR);
+  if (container instanceof HTMLElement) {
     return container;
   }
-  return window;
+  const fallback = document.querySelector(".portfolio-page");
+  if (fallback instanceof HTMLElement) {
+    return fallback;
+  }
+  return document.documentElement;
 }
 
 export function getScrollY(): number {
-  const root = getScrollRoot();
-  if (root === window) {
-    return window.scrollY;
-  }
-  return root.scrollTop;
+  return getScrollRoot().scrollTop;
 }
 
 export function scrollToY(y: number, behavior: ScrollBehavior = "smooth") {
-  const root = getScrollRoot();
-  if (root === window) {
-    window.scrollTo({ top: y, behavior });
-  } else {
-    root.scrollTo({ top: y, behavior });
-  }
+  getScrollRoot().scrollTo({ top: y, behavior });
 }
 
 export function scrollToElement(id: string, offset = 80) {
   const element = document.getElementById(id);
   if (!element) return;
 
-  const root = getScrollRoot();
-  if (root === window) {
-    const y = element.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  } else {
-    const y = element.getBoundingClientRect().top + root.scrollTop - offset;
-    root.scrollTo({ top: y, behavior: "smooth" });
-  }
+  const container = getScrollRoot();
+  const y = element.getBoundingClientRect().top + container.scrollTop - offset;
+  container.scrollTo({ top: y, behavior: "smooth" });
 
   window.history.pushState(null, "", `#${id}`);
 }

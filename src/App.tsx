@@ -9,6 +9,7 @@ import Skills from "./Sections/Skills";
 import Education from "./Sections/Studies";
 import Certifications from "./Sections/Certifications";
 import Navbar from "./components/Navbar";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 import { scrollToElement } from "./utils/scroll";
 
 function App() {
@@ -39,39 +40,43 @@ function App() {
         backgroundImage: bgImage,
       }}
     >
-      <Navbar scrollToSection={scrollToSection} />
+      <div className="portfolio-scroll">
+        <Navbar scrollToSection={scrollToSection} />
 
-      <div className="portfolio-body">
-        <Header />
+        <div className="portfolio-body">
+          <Header />
 
-        <main className="portfolio-main">
-        <div id="about">
-          <AboutMe />
+          <main className="portfolio-main">
+            <div id="about">
+              <AboutMe />
+            </div>
+
+            <div id="skills">
+              <Skills />
+            </div>
+
+            <div id="projects">
+              <Projects />
+            </div>
+
+            <div id="experience">
+              <Experiences />
+            </div>
+
+            <div id="education">
+              <Education />
+            </div>
+
+            <div id="certifications">
+              <Certifications />
+            </div>
+          </main>
         </div>
 
-        <div id="skills">
-          <Skills />
-        </div>
-
-        <div id="projects">
-          <Projects />
-        </div>
-
-        <div id="experience">
-          <Experiences />
-        </div>
-
-        <div id="education">
-          <Education />
-        </div>
-
-        <div id="certifications">
-          <Certifications />
-        </div>
-      </main>
+        <Footer />
       </div>
 
-      <Footer />
+      <LanguageSwitcher />
       <Analytics />
     </div>
   );

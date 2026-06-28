@@ -1,10 +1,12 @@
 import React, { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Mail, Phone, MapPin, Download, Loader2 } from "lucide-react";
 import ContactModal from "../components/ContactModal";
 import { getPhoneHref, LINKEDIN_URL } from "../config/contact";
 import { downloadResume } from "../utils/downloadResume";
 
 const Header: FC = () => {
+  const { t } = useTranslation();
   const [showContact, setShowContact] = useState(false);
   const [phoneHover, setPhoneHover] = useState(false);
   const [resumeLoading, setResumeLoading] = useState(false);
@@ -31,12 +33,12 @@ const Header: FC = () => {
 
   return (
     <header className="profile-header-card">
-      <img src="/portre.webp" alt="András Czipa" />
-      <h1>András Czipa</h1>
-      <h2>Frontend Developer&nbsp;|&nbsp;React, Next.js, TypeScript</h2>
+      <img src="/portre.webp" alt={t("header.name")} />
+      <h1>{t("header.name")}</h1>
+      <h2>{t("header.role")}</h2>
       <div className="header-location">
         <MapPin size={14} />
-        Hungary
+        {t("header.location")}
       </div>
 
       <div className="header-actions">
@@ -45,7 +47,7 @@ const Header: FC = () => {
           onClick={() => setShowContact(true)}
         >
           <Mail size={18} />
-          Message me
+          {t("header.messageMe")}
         </button>
 
         <div
@@ -60,7 +62,7 @@ const Header: FC = () => {
           }}
         >
           <Phone size={18} className={phoneHover ? "phone-ring" : ""} />
-          Call me
+          {t("header.callMe")}
         </div>
 
         <button
@@ -73,7 +75,7 @@ const Header: FC = () => {
           ) : (
             <Download size={18} />
           )}
-          {resumeError ? "Try again" : "Resume"}
+          {resumeError ? t("header.tryAgain") : t("header.resume")}
         </button>
 
         <a
@@ -82,7 +84,7 @@ const Header: FC = () => {
           rel="noopener noreferrer"
           className="header-action-btn header-action-btn--icon"
         >
-          <img src="/LI-Logo.png" alt="LinkedIn" className="linkedin-logo" />
+          <img src="/LI-Logo.png" alt={t("header.linkedinAlt")} className="linkedin-logo" />
         </a>
       </div>
 

@@ -1,8 +1,10 @@
 import { Download, Loader2 } from "lucide-react";
 import React, { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { downloadResume } from "../utils/downloadResume";
 
 const Resume: FC = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -30,7 +32,7 @@ const Resume: FC = () => {
         ) : (
           <Download size={16} style={{ marginRight: "8px" }} />
         )}
-        <span>{error ? "Try again" : "Download My Resume"}</span>
+        <span>{error ? t("resume.tryAgain") : t("resume.download")}</span>
       </button>
     </div>
   );

@@ -1,23 +1,24 @@
 import React, { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { Trophy } from "lucide-react";
 
 const Certifications: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="certifications">
       <h3 className="section-title">
         <Trophy size={24} style={{ marginRight: "0.5rem" }} />
-        Certifications
+        {t("certifications.title")}
       </h3>
       <div className="section-card">
-        <div className="accordion-title">
-          Ultimate AWS Certified Cloud Practitioner CLF-C02 2026
-        </div>
-        <div className="accordion-subtitle">Amazon Web Services (AWS)</div>
-        <div className="accordion-date">Dec 2025</div>
+        <div className="accordion-title">{t("certifications.awsTitle")}</div>
+        <div className="accordion-subtitle">{t("certifications.awsIssuer")}</div>
+        <div className="accordion-date">{t("certifications.awsDate")}</div>
         <div>
           <img
             src="/cloud-aws.webp"
-            alt="AWS Cloud Practitioner Certification"
+            alt={t("certifications.awsAlt")}
             style={{ maxWidth: "400px", height: "auto", borderRadius: "8px" }}
           />
         </div>

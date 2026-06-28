@@ -1,21 +1,24 @@
 import React, { FC } from "react";
-import { projects } from "./utils";
+import { useTranslation } from "react-i18next";
+import { projectsMeta } from "./utils";
 import { FolderGit2, ExternalLink } from "lucide-react";
 
 const Projects: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="projects">
       <h3 className="section-title">
         <FolderGit2 size={24} style={{ marginRight: "0.5rem" }} />
-        Side Projects
+        {t("projects.title")}
       </h3>
       <div className="projects-scroll">
-        {projects.map((project) => (
-          <div className="project-card" key={project.name}>
+        {projectsMeta.map((project) => (
+          <div className="project-card" key={project.id}>
             {project.logo && (
               <img
                 src={project.logo}
-                alt={`${project.name} logo`}
+                alt={t("projects.logoAlt", { name: project.name })}
                 className="project-card-logo"
               />
             )}
@@ -28,8 +31,12 @@ const Projects: FC = () => {
               {project.name}
               <ExternalLink size={14} />
             </a>
-            <p className="project-card-desc">{project.description}</p>
-            <div className="project-card-stack">Stack: {project.stack}</div>
+            <p className="project-card-desc">
+              {t(`projects.${project.id}.description`)}
+            </p>
+            <div className="project-card-stack">
+              {t("projects.stack", { stack: project.stack })}
+            </div>
           </div>
         ))}
       </div>

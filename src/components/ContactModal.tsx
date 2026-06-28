@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { X, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
@@ -24,6 +25,7 @@ const TURNSTILE_SITE_KEY =
 const MIN_SUBMIT_MS = 3000;
 
 const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const [status, setStatus] = useState<Status>("idle");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const openedAtRef = useRef<number>(Date.now());
@@ -112,19 +114,17 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
     return (
       <div className="modal-overlay" onClick={handleOverlayClick}>
         <div className="modal-content modal-status">
-          <button className="modal-close" onClick={onClose} aria-label="Close">
+          <button className="modal-close" onClick={onClose} aria-label={t("contact.closeAria")}>
             <X size={20} />
           </button>
           <CheckCircle
             size={48}
             className="modal-status-icon modal-status-icon--success"
           />
-          <h3 className="modal-title">Message sent!</h3>
-          <p className="modal-status-text">
-            Thanks for reaching out. I'll get back to you soon.
-          </p>
+          <h3 className="modal-title">{t("contact.successTitle")}</h3>
+          <p className="modal-status-text">{t("contact.successText")}</p>
           <button className="modal-submit" onClick={onClose}>
-            Close
+            {t("contact.close")}
           </button>
         </div>
       </div>
@@ -135,17 +135,17 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
     return (
       <div className="modal-overlay" onClick={handleOverlayClick}>
         <div className="modal-content modal-status">
-          <button className="modal-close" onClick={onClose} aria-label="Close">
+          <button className="modal-close" onClick={onClose} aria-label={t("contact.closeAria")}>
             <X size={20} />
           </button>
           <AlertCircle
             size={48}
             className="modal-status-icon modal-status-icon--error"
           />
-          <h3 className="modal-title">Something went wrong</h3>
-          <p className="modal-status-text">Please try again later.</p>
+          <h3 className="modal-title">{t("contact.errorTitle")}</h3>
+          <p className="modal-status-text">{t("contact.errorText")}</p>
           <button className="modal-submit" onClick={() => setStatus("idle")}>
-            Try again
+            {t("contact.tryAgain")}
           </button>
         </div>
       </div>
@@ -158,34 +158,34 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
-        <button className="modal-close" onClick={onClose} aria-label="Close">
+        <button className="modal-close" onClick={onClose} aria-label={t("contact.closeAria")}>
           <X size={20} />
         </button>
-        <h3 className="modal-title">Send me a message</h3>
+        <h3 className="modal-title">{t("contact.title")}</h3>
         <form onSubmit={handleSubmit(onSubmit)} className="modal-form">
           <input
             type="text"
-            placeholder="Your name"
+            placeholder={t("contact.namePlaceholder")}
             className="modal-input"
             disabled={isSending}
             {...register("name", { required: true })}
           />
           <input
             type="email"
-            placeholder="Your email"
+            placeholder={t("contact.emailPlaceholder")}
             className="modal-input"
             disabled={isSending}
             {...register("email", { required: true })}
           />
           <input
             type="text"
-            placeholder="Subject"
+            placeholder={t("contact.subjectPlaceholder")}
             className="modal-input"
             disabled={isSending}
             {...register("subject", { required: true })}
           />
           <textarea
-            placeholder="Your message..."
+            placeholder={t("contact.messagePlaceholder")}
             className="modal-input modal-textarea"
             rows={5}
             disabled={isSending}
@@ -213,12 +213,12 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
             {isSending ? (
               <>
                 <Loader2 size={16} className="spinner" />
-                Sending...
+                {t("contact.sending")}
               </>
             ) : (
               <>
                 <Send size={16} />
-                Send
+                {t("contact.send")}
               </>
             )}
           </button>

@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
-import { experiences } from "./utils";
+import { useTranslation } from "react-i18next";
+import { experiencesMeta } from "./utils";
 import {
   Briefcase,
   Code2,
@@ -18,7 +19,7 @@ import {
 } from "lucide-react";
 import AccordionCard from "../components/AccordionCard";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>> = {
   Code2,
   Plug,
   BarChart3,
@@ -35,6 +36,7 @@ const iconMap: Record<string, any> = {
 };
 
 const Experiences: FC = () => {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -45,36 +47,35 @@ const Experiences: FC = () => {
     <section id="experience">
       <h3 className="section-title">
         <Briefcase size={24} style={{ marginRight: "0.5rem" }} />
-        Experience
+        {t("experience.title")}
       </h3>
-      {experiences.map((exp, i) => (
+      {experiencesMeta.map((exp, i) => (
         <AccordionCard
-          key={exp.title}
-          title={exp.title}
+          key={exp.id}
+          title={t(`experience.items.${exp.id}.title`)}
           subtitle={exp.company}
-          date={exp.date}
+          date={t(`experience.items.${exp.id}.date`)}
           isOpen={openIndex === i}
           onToggle={() => handleToggle(i)}
         >
           <div className="responsibilities-grid">
-            {exp.responsibilities.map((resp, j) => {
+            {exp.responsibilities.map((resp) => {
               const Icon = iconMap[resp.icon];
+              const baseKey = `experience.items.${exp.id}.responsibilities.${resp.id}`;
               return (
-                <div className="responsibility-card" key={j}>
+                <div className="responsibility-card" key={resp.id}>
                   <div className="responsibility-title">
                     {Icon && (
                       <Icon size={18} style={{ marginRight: "0.5rem" }} />
                     )}
-                    {resp.title}
+                    {t(`${baseKey}.title`)}
                   </div>
                   <div className="responsibility-description">
-                    {resp.description}
+                    {t(`${baseKey}.description`)}
                   </div>
-                  {resp.example && (
-                    <div className="responsibility-example">
-                      {resp.example}
-                    </div>
-                  )}
+                  <div className="responsibility-example">
+                    {t(`${baseKey}.example`)}
+                  </div>
                 </div>
               );
             })}

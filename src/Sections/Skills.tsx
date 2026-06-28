@@ -1,4 +1,5 @@
-import React, { FC, useState, useRef } from "react";
+import React, { FC, useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { skills } from "./utils";
 import {
   Award,
@@ -21,7 +22,9 @@ type SkillFilter =
   | "other";
 
 const Skills: FC = () => {
+  const { t, i18n } = useTranslation();
   const [filter, setFilter] = useState<SkillFilter>("frontend");
+  const [showArrows, setShowArrows] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -30,13 +33,32 @@ const Skills: FC = () => {
       ? skills
       : skills.filter((skill) => skill.category === filter);
 
-  const categoryConfig: Record<SkillFilter, { label: string; icon: any }> = {
-    all: { label: "All Skills", icon: Layers },
-    frontend: { label: "Frontend", icon: Code2 },
-    backend: { label: "Backend", icon: Database },
-    devops: { label: "DevOps", icon: Gauge },
-    tools: { label: "Tools", icon: Wrench },
-    other: { label: "Other", icon: MoreHorizontal },
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const checkOverflow = () => {
+      setShowArrows(el.scrollWidth > el.clientWidth + 1);
+    };
+
+    checkOverflow();
+    const observer = new ResizeObserver(checkOverflow);
+    observer.observe(el);
+    window.addEventListener("resize", checkOverflow);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", checkOverflow);
+    };
+  }, [i18n.language]);
+
+  const categoryConfig: Record<SkillFilter, { labelKey: string; icon: typeof Layers }> = {
+    all: { labelKey: "skills.all", icon: Layers },
+    frontend: { labelKey: "skills.frontend", icon: Code2 },
+    backend: { labelKey: "skills.backend", icon: Database },
+    devops: { labelKey: "skills.devops", icon: Gauge },
+    tools: { labelKey: "skills.tools", icon: Wrench },
+    other: { labelKey: "skills.other", icon: MoreHorizontal },
   };
 
   const skillFilters = [
@@ -46,26 +68,31 @@ const Skills: FC = () => {
     "devops",
     "tools",
     "other",
-  ] as SkillFilter[]
+  ] as SkillFilter[];
 
   return (
     <section id="skills" ref={sectionRef}>
       <h3 className="section-title">
         <Award size={24} style={{ marginRight: "0.5rem" }} />
-        Skills
+        {t("skills.title")}
       </h3>
       <div className="section-card-no-hover">
         <div className="skills-filter-wrapper">
-          <button
-            className="skills-filter-arrow skills-filter-arrow--left"
-            onClick={() => {
-              scrollRef.current?.scrollBy({ left: -150, behavior: "smooth" });
-            }}
-            aria-label="Scroll left"
+          {showArrows && (
+            <button
+              className="skills-filter-arrow skills-filter-arrow--left"
+              onClick={() => {
+                scrollRef.current?.scrollBy({ left: -150, behavior: "smooth" });
+              }}
+              aria-label={t("skills.scrollLeft")}
+            >
+              <ChevronLeft size={18} />
+            </button>
+          )}
+          <div
+            className={`skills-filter${showArrows ? "" : " skills-filter--centered"}`}
+            ref={scrollRef}
           >
-            <ChevronLeft size={18} />
-          </button>
-          <div className="skills-filter" ref={scrollRef}>
             {skillFilters.map((cat) => {
               const Icon = categoryConfig[cat].icon;
               return (
@@ -78,32 +105,25 @@ const Skills: FC = () => {
                   }}
                 >
                   <Icon size={16} />
-                  <span>{categoryConfig[cat].label}</span>
+                  <span>{t(categoryConfig[cat].labelKey)}</span>
                 </button>
               );
             })}
           </div>
-          <button
-            className="skills-filter-arrow skills-filter-arrow--right"
-            onClick={() => {
-              scrollRef.current?.scrollBy({ left: 150, behavior: "smooth" });
-            }}
-            aria-label="Scroll right"
-          >
-            <ChevronRight size={18} />
-          </button>
+          {showArrows && (
+            <button
+              className="skills-filter-arrow skills-filter-arrow--right"
+              onClick={() => {
+                scrollRef.current?.scrollBy({ left: 150, behavior: "smooth" });
+              }}
+              aria-label={t("skills.scrollRight")}
+            >
+              <ChevronRight size={18} />
+            </button>
+          )}
         </div>
 
-        {/* Skills Display */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "8px",
-            justifyContent: "center",
-            minHeight: "80px",
-          }}
-        >
+        <div className="skills-tags">
           {filteredSkills.map((skill) => (
             <span className="skill-tag" key={skill.name}>
               {skill.name}

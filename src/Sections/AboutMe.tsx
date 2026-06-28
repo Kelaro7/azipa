@@ -1,70 +1,38 @@
 import React, { FC } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { User } from "lucide-react";
 
+const techHighlight = <span style={{ color: "#00b4b6" }} />;
+
+const paragraphStyle = {
+  color: "#fff",
+  fontSize: "1.08rem",
+  lineHeight: 1.8,
+  marginBottom: 18,
+  textAlign: "center" as const,
+};
+
 const AboutMe: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="about">
       <h3 className="section-title">
         <User size={24} style={{ marginRight: "0.5rem" }} />
-        About Me
+        {t("about.title")}
       </h3>
       <div className="section-card">
-        <p
-          style={{
-            color: "#fff",
-            fontSize: "1.08rem",
-            lineHeight: 1.8,
-            marginBottom: 18,
-            textAlign: "center",
-          }}
-        >
-          <strong>Frontend Developer</strong> with professional experience in
-          building scalable web applications using{" "}
-          <span style={{ color: "#00b4b6" }}>React</span>,{" "}
-          <span style={{ color: "#00b4b6" }}>Next.js</span>,{" "}
-          <span style={{ color: "#00b4b6" }}>TypeScript</span>, and{" "}
-          <span style={{ color: "#00b4b6" }}>Redux</span>.
+        <p style={paragraphStyle}>
+          <Trans i18nKey="about.p1" components={{ 1: techHighlight, strong: <strong /> }} />
         </p>
-        <p
-          style={{
-            color: "#fff",
-            fontSize: "1.08rem",
-            lineHeight: 1.8,
-            marginBottom: 18,
-            textAlign: "center",
-          }}
-        >
-          Active in full-stack side projects with{" "}
-          <span style={{ color: "#00b4b6" }}>Node.js</span>,{" "}
-          <span style={{ color: "#00b4b6" }}>Express</span>, and{" "}
-          <span style={{ color: "#00b4b6" }}>Laravel</span>.
+        <p style={paragraphStyle}>
+          <Trans i18nKey="about.p2" components={{ 1: techHighlight }} />
         </p>
-        <p
-          style={{
-            color: "#fff",
-            fontSize: "1.08rem",
-            lineHeight: 1.8,
-            marginBottom: 18,
-            textAlign: "center",
-          }}
-        >
-          Experienced in integrating REST APIs (Node.js and PHP) and deploying
-          side projects on cloud platforms such as{" "}
-          <span style={{ color: "#00b4b6" }}>Vercel</span> and{" "}
-          <span style={{ color: "#00b4b6" }}>Render</span>.
+        <p style={paragraphStyle}>
+          <Trans i18nKey="about.p3" components={{ 1: techHighlight }} />
         </p>
-        <p
-          style={{
-            color: "#fff",
-            fontSize: "1.08rem",
-            lineHeight: 1.8,
-            textAlign: "center",
-          }}
-        >
-          Enthusiastic about clean code, Agile teamwork, and AI-assisted
-          development with{" "}
-          <span style={{ color: "#00b4b6" }}>GitHub Copilot</span> and{" "}
-          <span style={{ color: "#00b4b6" }}>Cursor</span>.
+        <p style={{ ...paragraphStyle, marginBottom: 0 }}>
+          <Trans i18nKey="about.p4" components={{ 1: techHighlight }} />
         </p>
       </div>
     </section>
