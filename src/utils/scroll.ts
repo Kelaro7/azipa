@@ -1,3 +1,5 @@
+import { buildLangUrl, getCurrentLanguage } from "../i18n/language";
+
 const SCROLL_SELECTOR = ".portfolio-scroll";
 
 export function getScrollRoot(): HTMLElement {
@@ -28,10 +30,12 @@ export function scrollToElement(id: string, offset = 80) {
   const y = element.getBoundingClientRect().top + container.scrollTop - offset;
   container.scrollTo({ top: y, behavior: "smooth" });
 
-  window.history.pushState(null, "", `#${id}`);
+  const lang = getCurrentLanguage();
+  window.history.pushState(null, "", buildLangUrl(lang, `#${id}`));
 }
 
 export function scrollToTop() {
   scrollToY(0);
-  window.history.pushState(null, "", "#about");
+  const lang = getCurrentLanguage();
+  window.history.pushState(null, "", buildLangUrl(lang, "#about"));
 }

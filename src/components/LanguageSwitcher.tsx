@@ -1,16 +1,16 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { AppLanguage } from "../i18n/language";
 
-const FLAGS = {
+const FLAGS: Record<AppLanguage, string> = {
   en: "🇬🇧",
   hu: "🇭🇺",
-} as const;
+};
 
 const LanguageSwitcher: FC = () => {
   const { i18n, t } = useTranslation();
-  const isHu = i18n.language.startsWith("hu");
-  const currentLang = isHu ? "hu" : "en";
-  const nextLang = isHu ? "en" : "hu";
+  const currentLang: AppLanguage = i18n.language.startsWith("hu") ? "hu" : "en";
+  const nextLang: AppLanguage = currentLang === "hu" ? "en" : "hu";
 
   const toggleLanguage = () => {
     i18n.changeLanguage(nextLang);

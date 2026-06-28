@@ -2,13 +2,16 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import en from "../locales/en.json";
 import hu from "../locales/hu.json";
+import {
+  applyLanguage,
+  resolveInitialLanguage,
+  type AppLanguage,
+} from "./language";
 
-const STORAGE_KEY = "portfolio-lang";
+const fallback: AppLanguage = "en";
 
-function getInitialLanguage(): string {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === "en" || stored === "hu") return stored;
-  return navigator.language.startsWith("hu") ? "hu" : "en";
+function getBootstrapLanguage(): AppLanguage {
+  return resolveInitialLanguage() ?? fallback;
 }
 
 i18n.use(initReactI18next).init({
@@ -16,18 +19,23 @@ i18n.use(initReactI18next).init({
     en: { translation: en },
     hu: { translation: hu },
   },
-  lng: getInitialLanguage(),
-  fallbackLng: "en",
+  lng: getBootstrapLanguage(),
+  fallbackLng: fallback,
   interpolation: {
     escapeValue: false,
   },
 });
 
-i18n.on("languageChanged", (lng) => {
-  localStorage.setItem(STORAGE_KEY, lng);
-  document.documentElement.lang = lng;
-});
+const bootstrapLang = resolveInitialLanguage();
+if (bootstrapLang) {
+  applyLanguage(bootstrapLang);
+} else {
+  document.documentElement.lang = fallback;
+}
 
-document.documentElement.lang = i18n.language;
+i18n.on("languageChanged", (lng) => {
+  const lang: AppLanguage = lng.startsWith("hu") ? "hu" : "en";
+  applyLanguage(lang);
+});
 
 export default i18n;
