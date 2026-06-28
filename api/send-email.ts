@@ -1,22 +1,10 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
+import { getClientIp, isRateLimited } from "./_lib/rate-limit";
+import { verifyTurnstileToken } from "./_lib/turnstile";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const rateLimitMap = new Map<string, number[]>();
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-const RATE_LIMIT_MAX = 5;
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const timestamps = rateLimitMap.get(ip) ?? [];
-  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-  rateLimitMap.set(ip, recent);
-
-  if (recent.length >= RATE_LIMIT_MAX) return true;
-  recent.push(now);
-  return false;
-}
+const MIN_SUBMIT_MS = 3000;
 
 function escapeHtml(str: string): string {
   return str
@@ -32,16 +20,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const clientIp =
-    (Array.isArray(req.headers["x-forwarded-for"])
-      ? req.headers["x-forwarded-for"][0]
-      : req.headers["x-forwarded-for"]?.split(",")[0]?.trim()) ?? "unknown";
+  const clientIp = getClientIp(req.headers["x-forwarded-for"]);
 
-  if (isRateLimited(clientIp)) {
+  const { name, email, subject, message, website, turnstileToken, elapsedMs } =
+    req.body ?? {};
+
+  if (website) {
+    return res.status(200).json({ success: true });
+  }
+
+  if (
+    isRateLimited("send-email", clientIp, {
+      max: 5,
+      windowMs: 60 * 60 * 1000,
+    })
+  ) {
     return res.status(429).json({ error: "Too many requests. Try again later." });
   }
 
-  const { name, email, subject, message } = req.body ?? {};
+  if (typeof elapsedMs !== "number" || elapsedMs < MIN_SUBMIT_MS) {
+    return res.status(400).json({ error: "Invalid submission" });
+  }
+
+  if (!turnstileToken || typeof turnstileToken !== "string") {
+    return res.status(400).json({ error: "Captcha verification required" });
+  }
+
+  const turnstileValid = await verifyTurnstileToken(turnstileToken, clientIp);
+  if (!turnstileValid) {
+    return res.status(400).json({ error: "Captcha verification failed" });
+  }
 
   if (!name || !email || !subject || !message) {
     return res.status(400).json({ error: "All fields are required" });

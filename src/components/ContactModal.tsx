@@ -1,5 +1,6 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { X, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
 interface ContactModalProps {
@@ -12,17 +13,33 @@ interface ContactFormData {
   email: string;
   subject: string;
   message: string;
+  website?: string;
 }
 
 type Status = "idle" | "sending" | "success" | "error";
 
+const TURNSTILE_SITE_KEY =
+  import.meta.env.VITE_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
+
+const MIN_SUBMIT_MS = 3000;
+
 const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
   const [status, setStatus] = useState<Status>("idle");
-  const { register, handleSubmit, reset, formState: { isValid } } = useForm<ContactFormData>({ mode: "onChange" });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const openedAtRef = useRef<number>(Date.now());
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = useForm<ContactFormData>({ mode: "onChange" });
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      openedAtRef.current = Date.now();
     } else {
       document.body.style.overflow = "";
     }
@@ -34,6 +51,7 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen) {
       setStatus("idle");
+      setTurnstileToken(null);
       reset();
     }
   }, [isOpen, reset]);
@@ -41,21 +59,48 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const onSubmit = async (data: ContactFormData) => {
+    if (data.website) {
+      setStatus("success");
+      reset();
+      return;
+    }
+
+    const elapsedMs = Date.now() - openedAtRef.current;
+    if (elapsedMs < MIN_SUBMIT_MS) {
+      setStatus("error");
+      return;
+    }
+
+    if (!turnstileToken) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
 
     try {
       const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+          turnstileToken,
+          elapsedMs,
+        }),
       });
 
       if (!res.ok) throw new Error("Failed to send");
 
       setStatus("success");
       reset();
+      setTurnstileToken(null);
     } catch {
       setStatus("error");
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
     }
   };
 
@@ -70,7 +115,10 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
           <button className="modal-close" onClick={onClose} aria-label="Close">
             <X size={20} />
           </button>
-          <CheckCircle size={48} className="modal-status-icon modal-status-icon--success" />
+          <CheckCircle
+            size={48}
+            className="modal-status-icon modal-status-icon--success"
+          />
           <h3 className="modal-title">Message sent!</h3>
           <p className="modal-status-text">
             Thanks for reaching out. I'll get back to you soon.
@@ -90,11 +138,12 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
           <button className="modal-close" onClick={onClose} aria-label="Close">
             <X size={20} />
           </button>
-          <AlertCircle size={48} className="modal-status-icon modal-status-icon--error" />
+          <AlertCircle
+            size={48}
+            className="modal-status-icon modal-status-icon--error"
+          />
           <h3 className="modal-title">Something went wrong</h3>
-          <p className="modal-status-text">
-            Please try again or contact me directly at czipa7@gmail.com
-          </p>
+          <p className="modal-status-text">Please try again later.</p>
           <button className="modal-submit" onClick={() => setStatus("idle")}>
             Try again
           </button>
@@ -104,6 +153,7 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
   }
 
   const isSending = status === "sending";
+  const canSubmit = isValid && !!turnstileToken && !isSending;
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
@@ -141,11 +191,25 @@ const ContactModal: FC<ContactModalProps> = ({ isOpen, onClose }) => {
             disabled={isSending}
             {...register("message", { required: true })}
           />
-          <button
-            type="submit"
-            className="modal-submit"
-            disabled={isSending || !isValid}
-          >
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="modal-honeypot"
+            {...register("website")}
+          />
+          <div className="modal-turnstile">
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={setTurnstileToken}
+              onExpire={() => setTurnstileToken(null)}
+              onError={() => setTurnstileToken(null)}
+              options={{ theme: "dark" }}
+            />
+          </div>
+          <button type="submit" className="modal-submit" disabled={!canSubmit}>
             {isSending ? (
               <>
                 <Loader2 size={16} className="spinner" />

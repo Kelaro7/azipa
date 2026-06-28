@@ -1,18 +1,32 @@
 import React, { FC, useState } from "react";
-import { Mail, Phone, MapPin, Download, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Download, Loader2 } from "lucide-react";
 import ContactModal from "../components/ContactModal";
+import { getPhoneHref, LINKEDIN_URL } from "../config/contact";
+import { downloadResume } from "../utils/downloadResume";
 
 const Header: FC = () => {
   const [showContact, setShowContact] = useState(false);
   const [phoneHover, setPhoneHover] = useState(false);
+  const [resumeLoading, setResumeLoading] = useState(false);
+  const [resumeError, setResumeError] = useState(false);
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/andras_czipa_resume_frontend.pdf";
-    link.download = "andras_czipa_resume_frontend.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = async () => {
+    setResumeLoading(true);
+    setResumeError(false);
+    try {
+      await downloadResume();
+    } catch {
+      setResumeError(true);
+    } finally {
+      setResumeLoading(false);
+    }
+  };
+
+  const handleCall = () => {
+    setPhoneHover(true);
+    setTimeout(() => {
+      window.location.href = getPhoneHref();
+    }, 500);
   };
 
   return (
@@ -38,26 +52,34 @@ const Header: FC = () => {
           className={`header-action-btn header-action-btn--call${phoneHover ? " header-action-btn--calling" : ""}`}
           onMouseEnter={() => setPhoneHover(true)}
           onMouseLeave={() => setPhoneHover(false)}
-          onClick={() => {
-            setPhoneHover(true);
-            setTimeout(() => {
-              window.location.href = "tel:+36204299395";
-            }, 500);
+          onClick={handleCall}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") handleCall();
           }}
         >
           <Phone size={18} className={phoneHover ? "phone-ring" : ""} />
           Call me
         </div>
 
-        <button className="header-action-btn" onClick={handleDownload}>
-          <Download size={18} />
-          Resume
+        <button
+          className="header-action-btn"
+          onClick={handleDownload}
+          disabled={resumeLoading}
+        >
+          {resumeLoading ? (
+            <Loader2 size={18} className="spinner" />
+          ) : (
+            <Download size={18} />
+          )}
+          {resumeError ? "Try again" : "Resume"}
         </button>
 
         <a
-          href="https://www.linkedin.com/in/andras-czipa/"
+          href={LINKEDIN_URL}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className="header-action-btn header-action-btn--icon"
         >
           <img src="/LI-Logo.png" alt="LinkedIn" className="linkedin-logo" />

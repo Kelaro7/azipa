@@ -1,16 +1,27 @@
-# React + Vite
+# Portfolio (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site deployed on Vercel.
 
-Currently, two official plugins are available:
+## Environment variables
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Copy `.env.example` to `.env.local` for local development. On Vercel, set the same variables in the project dashboard.
 
-## React Compiler
+| Variable | Scope | Description |
+|---|---|---|
+| `GMAIL_USER` | Server | Gmail address for contact form |
+| `GMAIL_APP_PASSWORD` | Server | Gmail app password |
+| `VITE_TURNSTILE_SITE_KEY` | Client | Cloudflare Turnstile site key |
+| `TURNSTILE_SECRET_KEY` | Server | Cloudflare Turnstile secret key |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Cloudflare Turnstile: create a site at [dash.cloudflare.com](https://dash.cloudflare.com/) → Turnstile. For local dev you can use test keys (see `.env.example`).
 
-## Expanding the ESLint configuration
+## Resume PDF
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Place the resume at `private/andras_czipa_resume_frontend.pdf`. It is served via `/api/resume` with rate limiting — not publicly accessible as a static file.
+
+## Scripts
+
+- `npm run dev` — local dev server
+- `npm run build` — production build
+- `npm run preview` — preview production build
+

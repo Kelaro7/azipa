@@ -24,42 +24,35 @@ export const experiences: Experience[] = [
   {
     title: "Software Developer – Frontend",
     company: "Assa Abloy",
-    date: "Feb 2026 – Present",
+    date: "2026 – Present",
     responsibilities: [
       {
-        title: "React 19 Development",
+        title: "Greenfield Product Development",
         icon: "Code2",
-        example: "Building modern web applications with React 19 and AI-assisted development",
+        example: "Architecting a brand-new product from scratch with React 19, TypeScript, and GraphQL",
         description:
-          "Developing frontend applications using React 19 with active Cursor AI usage, leveraging the latest React features and AI-powered tooling to boost productivity and code quality.",
+          "Actively involved from day one in architecting and developing a brand-new product from scratch using React 19 and TypeScript, leveraging GraphQL for modern, efficient data fetching.",
       },
       {
-        title: "Blazor to React Migration",
+        title: "Legacy Modernization & Platform Expansion",
         icon: "GitBranch",
-        example: "Refactoring legacy Blazor application to React 19",
+        example: "Refactoring Blazor systems into React 19 across Desktop, Kiosk, Tablet, and Mobile",
         description:
-          "Assisting in the refactoring of an existing Blazor application to React 19, ensuring feature parity and improved maintainability during the migration process.",
+          "Refactored legacy Blazor systems into modern React 19 applications across multiple platforms (Desktop, Kiosk, Tablet, and Mobile apps), streamlining integrations via OpenAPI-driven, type-safe REST API client generation.",
       },
       {
-        title: "OpenAPI Integration",
-        icon: "Plug",
-        example: "Type-safe API client generation from OpenAPI specs",
+        title: "AI-Driven Efficiency",
+        icon: "TrendingUp",
+        example: "Accelerating development with Cursor AI in the daily workflow",
         description:
-          "Handling OpenAPI specifications for seamless API integration, enabling auto-generated type-safe clients and consistent contract-first development.",
+          "Accelerated development lifecycles and optimized code quality by integrating advanced AI-assisted coding tools (Cursor AI) into the daily workflow.",
       },
       {
-        title: "Design System",
+        title: "Design Systems",
         icon: "Palette",
-        example: "Implementing a unified design system across projects",
+        example: "Company-wide Design System and UI Component Library",
         description:
-          "Implementing a design system to ensure visual consistency, accessibility, and a cohesive user experience across all web projects.",
-      },
-      {
-        title: "Component Library",
-        icon: "Boxes",
-        example: "Custom reusable component library for new web projects",
-        description:
-          "Building a custom components library tailored for new web projects, providing reusable, well-documented, and tested UI building blocks to accelerate development.",
+          "Contributed to the implementation of a company-wide Design System and UI Component Library to ensure visual consistency and drastically reduce time-to-market.",
       },
     ],
   },
