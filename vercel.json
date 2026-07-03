@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/resume.ts": {
+      "includeFiles": "private/andras_czipa_resume_frontend.pdf"
+    }
+  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }

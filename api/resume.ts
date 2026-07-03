@@ -3,11 +3,16 @@ import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { getClientIp, isRateLimited } from "./_lib/rate-limit";
 
-const RESUME_PATH = join(
-  process.cwd(),
-  "private",
-  "andras_czipa_resume_frontend.pdf"
-);
+const RESUME_FILENAME = "andras_czipa_resume_frontend.pdf";
+
+function getResumePath(): string | null {
+  const candidates = [
+    join(process.cwd(), "private", RESUME_FILENAME),
+    join(process.cwd(), "..", "private", RESUME_FILENAME),
+  ];
+
+  return candidates.find((path) => existsSync(path)) ?? null;
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "GET") {
@@ -25,13 +30,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(429).json({ error: "Too many requests. Try again later." });
   }
 
-  if (!existsSync(RESUME_PATH)) {
-    console.error("Resume file not found at:", RESUME_PATH);
+  const resumePath = getResumePath();
+  if (!resumePath) {
+    console.error("Resume file not found. cwd:", process.cwd());
     return res.status(404).json({ error: "Resume not found" });
   }
 
   try {
-    const pdf = readFileSync(RESUME_PATH);
+    const pdf = readFileSync(resumePath);
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader(
