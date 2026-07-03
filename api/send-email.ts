@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
-import { getClientIp, isRateLimited } from "./lib/rate-limit";
-import { verifyTurnstileToken } from "./lib/turnstile";
+import { getClientIp, isRateLimited } from "../lib/rate-limit.js";
+import { verifyTurnstileToken } from "../lib/turnstile.js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_SUBMIT_MS = 3000;

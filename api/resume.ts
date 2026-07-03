@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
-import { getClientIp, isRateLimited } from "./lib/rate-limit";
+import { getClientIp, isRateLimited } from "../lib/rate-limit.js";
 
 const RESUME_FILENAME = "andras_czipa_resume_frontend.pdf";
 
